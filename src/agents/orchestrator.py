@@ -261,7 +261,14 @@ class DiscussionOrchestrator:
                 ],
                 model_config=active_model,
             )
-            parsed = TradeProposal.model_validate_json(response.content)
+            content = (
+                response.content.strip()
+                .removeprefix("```json")
+                .removeprefix("```")
+                .removesuffix("```")
+                .strip()
+            )
+            parsed = TradeProposal.model_validate_json(content)
             return parsed.model_copy(update={"agent_votes": votes, "source_events": [event.id]})
         except Exception as e:
             logger.warning("orchestrator_proposal_parse_error", error=str(e))

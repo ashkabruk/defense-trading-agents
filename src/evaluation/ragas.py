@@ -114,7 +114,14 @@ RESPOND ONLY WITH VALID JSON, NO MARKDOWN, NO EXPLANATION. Format: {{"claims": [
         )
 
         try:
-            claims_data = json.loads(response.content)
+            content = (
+                response.content.strip()
+                .removeprefix("```json")
+                .removeprefix("```")
+                .removesuffix("```")
+                .strip()
+            )
+            claims_data = json.loads(content)
             return ClaimDecomposition(
                 claims=claims_data.get("claims", []),
                 proposal_id=proposal.id,
@@ -211,7 +218,14 @@ Score relevance on 0-1 scale. Return JSON: {{"score": 0.85, "explanation": "..."
                 messages=[message],
                 model_config=self.model_config,
             )
-            data = json.loads(response.content)
+            content = (
+                response.content.strip()
+                .removeprefix("```json")
+                .removeprefix("```")
+                .removesuffix("```")
+                .strip()
+            )
+            data = json.loads(content)
             score = float(data.get("score", default))
             return max(0.0, min(1.0, score))  # Clamp to [0, 1]
         except Exception as e:
