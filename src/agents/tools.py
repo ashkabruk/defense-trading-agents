@@ -186,13 +186,43 @@ def create_default_tool_registry(context: ToolContext) -> ToolRegistry:
             "sort_order": "desc",
             "limit": 1,
         }
-        async with httpx.AsyncClient(timeout=20) as client:
-            response = await client.get(endpoint, params=params)
-            response.raise_for_status()
-            payload = response.json()
+        try:
+            async with httpx.AsyncClient(timeout=20) as client:
+                response = await client.get(endpoint, params=params)
+                response.raise_for_status()
+                payload = response.json()
+        except httpx.HTTPStatusError as exc:
+            status = exc.response.status_code if exc.response is not None else None
+            if status == 400:
+                return {
+                    "series_id": series_id,
+                    "error": f"series not found: {series_id}",
+                    "date": None,
+                    "value": None,
+                }
+            return {
+                "series_id": series_id,
+                "error": f"FRED request failed (status {status})",
+                "date": None,
+                "value": None,
+            }
+        except (httpx.HTTPError, ValueError):
+            return {
+                "series_id": series_id,
+                "error": "FRED request failed",
+                "date": None,
+                "value": None,
+            }
 
         obs = payload.get("observations", [])
-        latest = obs[0] if obs else {}
+        if not obs:
+            return {
+                "series_id": series_id,
+                "error": f"series not found: {series_id}",
+                "date": None,
+                "value": None,
+            }
+        latest = obs[0]
         return {
             "series_id": series_id,
             "date": latest.get("date"),
