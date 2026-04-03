@@ -1,0 +1,40 @@
+environment: paper
+scan_interval_seconds: 300
+max_events_per_scan: 50
+max_queue_size: 5
+discussions_per_day: 10
+discussion_rounds: 3
+min_importance_score: 0.4
+escalation_threshold: 0.8
+ragas_min_score: 0.7
+ragas_max_retries: 2
+models:
+  scanner:
+    provider: gemini
+    model: gemini-2.5-flash-lite
+    api_key_env: GEMINI_API_KEY
+    max_tokens: 1000
+    temperature: 0.1
+  discussion:
+    provider: deepseek
+    model: deepseek-chat
+    api_key_env: DEEPSEEK_API_KEY
+    base_url: https://api.deepseek.com/v1
+    max_tokens: 2000
+    temperature: 0.3
+  evaluator:
+    provider: deepseek
+    model: deepseek-chat
+    api_key_env: DEEPSEEK_API_KEY
+    base_url: https://api.deepseek.com/v1
+    max_tokens: 2000
+    temperature: 0.1
+  premium:
+    provider: anthropic
+    model: claude-opus-4-6
+    api_key_env: ANTHROPIC_API_KEY
+    max_tokens: 4000
+    temperature: 0.2
+log_level: INFO
+log_format: json
+log_file: logs/trading.log

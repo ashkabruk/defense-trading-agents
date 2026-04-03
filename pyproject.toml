@@ -1,0 +1,51 @@
+[project]
+name = "defense-trading"
+version = "0.1.0"
+description = "Multi-agent trading system for defense-sector signals."
+readme = "PROJECT_SPEC.md"
+requires-python = ">=3.12"
+authors = [{ name = "Defense Trading Team" }]
+dependencies = [
+  "apscheduler>=3.10.4",
+  "anthropic>=0.49.0",
+  "chromadb>=1.0.8",
+  "feedparser>=6.0.11",
+  "google-genai>=1.10.0",
+  "httpx>=0.28.1",
+  "ib-insync>=0.9.86",
+  "openai>=1.75.0",
+  "python-dotenv>=1.0.1",
+  "pydantic>=2.11.0",
+  "pydantic-settings>=2.8.1",
+  "pyyaml>=6.0.2",
+  "spacy>=3.8.5",
+  "sqlalchemy>=2.0.40",
+  "structlog>=25.2.0",
+  "torch>=2.11.0",
+  "transformers>=4.51.3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.5",
+  "pytest-asyncio>=0.26.0",
+  "ruff>=0.11.5",
+]
+
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

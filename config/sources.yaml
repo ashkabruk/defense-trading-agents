@@ -1,0 +1,107 @@
+sources:
+  - name: sam_gov
+    enabled: true
+    type: api
+    endpoint: https://api.sam.gov/opportunities/v2/search
+    # SAM.gov has aggressive rate limits. During development, keep this at 3600
+    # (once per hour) to avoid burning daily quota.
+    params:
+      api_key_env: SAM_API_KEY
+      postedFrom: "{today_minus_1}"
+      limit: 50
+      naics: "336411,336412,336413,336414,336415,541330,541715"
+    interval_seconds: 3600
+    parser: sam_gov
+  - name: defense_gov
+    enabled: true
+    type: rss
+    url: https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=945
+    interval_seconds: 60
+    parser: defense_gov_rss
+  - name: truth_social
+    enabled: true
+    type: rss
+    url: https://truthsocial.com/@realDonaldTrump/feed
+    interval_seconds: 30
+    parser: truth_social
+    keywords_filter:
+      - defense
+      - military
+      - army
+      - navy
+      - air force
+      - lockheed
+      - raytheon
+      - boeing
+      - northrop
+      - missile
+      - nato
+      - china
+      - budget
+      - spending
+  - name: fred_macro
+    enabled: true
+    type: api
+    endpoint: https://api.stlouisfed.org/fred/series/observations
+    params:
+      api_key_env: FRED_API_KEY
+      series_ids:
+        - FEDFUNDS
+        - GDP
+        - UNRATE
+        - CPIAUCSL
+        - T10Y2Y
+    interval_seconds: 3600
+    parser: fred
+  - name: sec_edgar
+    enabled: true
+    type: api
+    endpoint: https://efts.sec.gov/LATEST/search-index
+    params:
+      forms: "4,8-K,10-Q"
+      tickers:
+        - LMT
+        - RTX
+        - NOC
+        - GD
+        - LHX
+        - BA
+        - HII
+        - TDG
+        - LDOS
+        - SAIC
+    interval_seconds: 1200
+    parser: sec_edgar
+  - name: congressional_trades
+    enabled: true
+    type: scraper
+    url: https://www.capitoltrades.com/trades?sector=Industrials
+    interval_seconds: 3600
+    parser: capitol_trades
+  - name: google_news_defense
+    enabled: true
+    type: rss
+    url: https://news.google.com/rss/search?q=defense+contract+OR+military+spending+OR+pentagon+budget&hl=en-US&gl=US&ceid=US:en
+    interval_seconds: 60
+    parser: google_news
+  - name: gao_reports
+    enabled: true
+    type: rss
+    url: https://www.gao.gov/rss/reports.xml
+    interval_seconds: 3600
+    parser: gao
+    keywords_filter:
+      - defense
+      - military
+      - weapon
+      - aircraft
+      - missile
+      - navy
+      - army
+      - DoD
+  - name: dsca_arms_sales
+    enabled: false
+    type: scraper
+    url: https://www.dsca.mil/press-media/major-arms-sales
+    interval_seconds: 3600
+    parser: dsca

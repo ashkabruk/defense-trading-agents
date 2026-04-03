@@ -1,0 +1,73 @@
+{
+    "last_updated": "2026-04-03T00:00:00Z",
+    "earnings_dates": [{
+            "ticker": "LMT",
+            "next_earnings_date": "2026-04-28",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "RTX",
+            "next_earnings_date": "2026-04-22",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "NOC",
+            "next_earnings_date": "2026-04-29",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "GD",
+            "next_earnings_date": "2026-04-27",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "LHX",
+            "next_earnings_date": "2026-05-06",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "BA",
+            "next_earnings_date": "2026-04-29",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "HII",
+            "next_earnings_date": "2026-05-07",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "TDG",
+            "next_earnings_date": "2026-05-06",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "LDOS",
+            "next_earnings_date": "2026-05-08",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "SAIC",
+            "next_earnings_date": "2026-05-07",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "KTOS",
+            "next_earnings_date": "2026-05-13",
+            "fiscal_quarter": "Q1 2026"
+        },
+        {
+            "ticker": "PLTR",
+            "next_earnings_date": "2026-05-04",
+            "fiscal_quarter": "Q1 2026"
+        }
+    ],
+    "trading_days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+    ],
+    "blackout_days_before": 5,
+    "notes": "Risk manager will reject trades within 5 trading days BEFORE earnings date"
+}

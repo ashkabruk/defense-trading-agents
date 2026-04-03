@@ -1,0 +1,87 @@
+{
+    "fundamentals": [{
+            "ticker": "LMT",
+            "name": "Lockheed Martin",
+            "annual_revenue": 66000000000,
+            "market_cap": 280000000000,
+            "defense_revenue_pct": 0.75
+        },
+        {
+            "ticker": "RTX",
+            "name": "Raytheon Technologies",
+            "annual_revenue": 67000000000,
+            "market_cap": 280000000000,
+            "defense_revenue_pct": 0.65
+        },
+        {
+            "ticker": "NOC",
+            "name": "Northrop Grumman",
+            "annual_revenue": 36000000000,
+            "market_cap": 125000000000,
+            "defense_revenue_pct": 0.82
+        },
+        {
+            "ticker": "GD",
+            "name": "General Dynamics",
+            "annual_revenue": 40000000000,
+            "market_cap": 145000000000,
+            "defense_revenue_pct": 0.68
+        },
+        {
+            "ticker": "LHX",
+            "name": "L3Harris Technologies",
+            "annual_revenue": 18000000000,
+            "market_cap": 57000000000,
+            "defense_revenue_pct": 0.82
+        },
+        {
+            "ticker": "BA",
+            "name": "Boeing",
+            "annual_revenue": 77000000000,
+            "market_cap": 170000000000,
+            "defense_revenue_pct": 0.42
+        },
+        {
+            "ticker": "HII",
+            "name": "Huntington Ingalls",
+            "annual_revenue": 11000000000,
+            "market_cap": 11000000000,
+            "defense_revenue_pct": 0.95
+        },
+        {
+            "ticker": "TDG",
+            "name": "TransDigm Group",
+            "annual_revenue": 34000000000,
+            "market_cap": 21000000000,
+            "defense_revenue_pct": 0.45
+        },
+        {
+            "ticker": "LDOS",
+            "name": "Leidos Holdings",
+            "annual_revenue": 12000000000,
+            "market_cap": 15000000000,
+            "defense_revenue_pct": 0.88
+        },
+        {
+            "ticker": "SAIC",
+            "name": "Science Applications International",
+            "annual_revenue": 8500000000,
+            "market_cap": 11000000000,
+            "defense_revenue_pct": 0.90
+        },
+        {
+            "ticker": "KTOS",
+            "name": "Kratos Defense & Security",
+            "annual_revenue": 750000000,
+            "market_cap": 2500000000,
+            "defense_revenue_pct": 0.92
+        },
+        {
+            "ticker": "PLTR",
+            "name": "Palantir Technologies",
+            "annual_revenue": 2230000000,
+            "market_cap": 85000000000,
+            "defense_revenue_pct": 0.55
+        }
+    ]
+}
