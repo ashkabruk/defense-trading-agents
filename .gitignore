@@ -5,3 +5,4 @@ data/
 logs/
 *.pyc
 .DS_Store
+dev_notes/
